@@ -2,7 +2,7 @@
 const THEMES = {
   default: { name: '精致立体', desc: '紫蓝渐变 + 柔和阴影', bg: '#f2f4f8' },
   dark:    { name: '暗夜黑',   desc: '深色背景，护眼舒适',   bg: '#1a1a2e' },
-  clean:   { name: '简约清爽', desc: '白底细线 + Apple 风',  bg: '#fafbfc' },
+  clean:   { name: '简约清爽', desc: '白底细线框 + 无阴影',   bg: '#f5f5f7' },
   warm:    { name: '活力暖色', desc: '珊瑚渐变 + 大圆角',     bg: '#fff8f3' }
 }
 
