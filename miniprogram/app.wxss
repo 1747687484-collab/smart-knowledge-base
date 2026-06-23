@@ -44,33 +44,33 @@ page {
 /* 主题：暗夜黑 */
 .container.theme-dark {
   --radius-card: 16rpx;
-  --shadow-card: 0 6rpx 20rpx rgba(0, 0, 0, 0.3);
-  --border-card: none;
-  --bg-page: #1a1a2e;
-  --bg-card: #232340;
-  --bg-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --bg-chip: #2d2d5e;
-  --bg-ghost: #2d2d5e;
-  --bg-tab: #2d2d5e;
-  --bg-input: #2a2a4a;
-  --bg-step: #2d2d5e;
-  --bg-tag: #1a3a3a;
-  --bg-feature1: #2d2d5e;
-  --bg-feature2: #1a3a3a;
-  --bg-feature3: #2d2050;
-  --bg-feature4: #3a3520;
-  --bg-divider: #3a3a5c;
-  --bg-border: #3a3a5c;
-  --bg-chunk-border: #2d2d50;
+  --shadow-card: 0 6rpx 20rpx rgba(0, 0, 0, 0.4);
+  --border-card: 1rpx solid rgba(255, 255, 255, 0.06);
+  --bg-page: #0f0f1a;
+  --bg-card: #1e1e36;
+  --bg-hero: linear-gradient(135deg, #4a5ae8 0%, #7c3aed 100%);
+  --bg-chip: rgba(99, 102, 241, 0.15);
+  --bg-ghost: rgba(99, 102, 241, 0.15);
+  --bg-tab: rgba(99, 102, 241, 0.15);
+  --bg-input: #16162e;
+  --bg-step: rgba(99, 102, 241, 0.12);
+  --bg-tag: rgba(94, 234, 212, 0.12);
+  --bg-feature1: rgba(99, 102, 241, 0.15);
+  --bg-feature2: rgba(94, 234, 212, 0.12);
+  --bg-feature3: rgba(168, 85, 247, 0.15);
+  --bg-feature4: rgba(251, 191, 36, 0.12);
+  --bg-divider: rgba(255, 255, 255, 0.08);
+  --bg-border: rgba(255, 255, 255, 0.1);
+  --bg-chunk-border: rgba(255, 255, 255, 0.06);
   --color-primary: #818cf8;
-  --color-primary-btn: #818cf8;
+  --color-primary-btn: #6366f1;
   --color-text: #e2e8f0;
-  --color-text-bold: #f1f5f9;
+  --color-text-bold: #f8fafc;
   --color-subtitle: #94a3b8;
   --color-tag: #5eead4;
-  --color-card-shadow: rgba(0, 0, 0, 0.3);
-  --color-primary-ghost: #c7d2fe;
-  --color-danger: #f87171;
+  --color-card-shadow: rgba(0, 0, 0, 0.4);
+  --color-primary-ghost: #a5b4fc;
+  --color-danger: #fb7185;
   --color-hero-title: #ffffff;
 }
 
