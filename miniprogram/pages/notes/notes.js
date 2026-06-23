@@ -1,11 +1,13 @@
 const { getNotes, removeNote, toggleNoteStar, pinNote, sortItems } = require('../../utils/storage')
 const { filterByKeyword, prepareListItem } = require('../../utils/search')
+const { getThemeClass } = require('../../utils/theme')
 
 const IC = '/assets/icons/svg'
 Page({
   data: {
     list: [],
     searchKey: '',
+    themeClass: '',
     icons: { note: IC + '/edit-3.svg', search: IC + '/search.svg', star: IC + '/star.svg', pin: IC + '/pin.svg' }
   },
   _searchTimer: null,
@@ -37,7 +39,7 @@ Page({
     const all = sortItems(getNotes() || [], { pinned: true })
     const filtered = filterByKeyword(all, key)
     const list = filtered.map(d => prepareListItem(d, key))
-    this.setData({ list })
+    this.setData({ list, themeClass: getThemeClass() })
   },
   onDelete(e) {
     const { id } = e.currentTarget.dataset

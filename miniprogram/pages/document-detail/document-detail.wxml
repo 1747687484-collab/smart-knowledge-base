@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container {{themeClass}}">
   <block wx:if="{{notFound}}">
     <view class="card" style="text-align: center; padding: 80rpx 24rpx;">
       <view class="title">记录未找到</view>

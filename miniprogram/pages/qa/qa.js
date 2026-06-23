@@ -1,16 +1,18 @@
 const storage = require('../../utils/storage')
 const ai = require('../../utils/ai')
+const { getThemeClass } = require('../../utils/theme')
 
 const IC = '/assets/icons/svg'
 Page({
   data: {
     question: '', docId: '', docTitle: '', onlyDoc: false, answer: '', sources: [],
-    history: [], loading: false, examples: ['帮我总结主要结论', '有哪些关键信息', '有没有提到风险', '下一步建议是什么'],
+    history: [], loading: false, themeClass: '', examples: ['帮我总结主要结论', '有哪些关键信息', '有没有提到风险', '下一步建议是什么'],
     icons: { qa: IC + '/message-circle.svg', copy: IC + '/copy.svg', search: IC + '/search.svg', brain: IC + '/brain.svg', database: IC + '/database.svg' }
   },
   _chunkCache: null,
   _chunkCacheTime: 0,
   onShow: function () {
+    this.setData({ themeClass: getThemeClass() })
     this.syncDocTitle()
     this.loadHistory()
     this._updateExamples()

@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container {{themeClass}}">
   <view class="card hero-card">
     <view class="icon-row">
       <image class="icon-lg" src="{{icons.doc}}" mode="aspectFit" />

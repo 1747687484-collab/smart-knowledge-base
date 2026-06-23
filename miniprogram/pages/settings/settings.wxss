@@ -1,0 +1,77 @@
+.theme-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
+}
+.theme-option {
+  border-radius: 16rpx;
+  padding: 16rpx;
+  text-align: center;
+  border: 2rpx solid var(--bg-border);
+  transition: border-color 0.2s;
+}
+.theme-active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4rpx var(--color-primary);
+  background: var(--bg-chip);
+}
+.theme-preview {
+  height: 120rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-bottom: 12rpx;
+  position: relative;
+}
+.tp-bar {
+  height: 16rpx;
+}
+.tp-hero {
+  height: 28rpx;
+  margin: 6rpx 10rpx;
+  border-radius: 6rpx;
+}
+.tp-row {
+  display: flex;
+  gap: 6rpx;
+  padding: 0 10rpx;
+}
+.tp-card {
+  flex: 1;
+  height: 40rpx;
+  border-radius: 6rpx;
+}
+
+/* 默认蓝预览 */
+.theme-preview-default { background: #f5f7fb; }
+.theme-preview-default .tp-bar { background: linear-gradient(135deg, #4f6ef7, #6c5ce7); }
+.theme-preview-default .tp-hero { background: linear-gradient(135deg, #eef2ff, #f8fbff); }
+.theme-preview-default .tp-card { background: #fff; box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.06); }
+
+/* 暗夜黑预览 */
+.theme-preview-dark { background: #1a1a2e; }
+.theme-preview-dark .tp-bar { background: linear-gradient(135deg, #4f6ef7, #6c5ce7); }
+.theme-preview-dark .tp-hero { background: #2d2d5e; }
+.theme-preview-dark .tp-card { background: #232340; }
+
+/* 暖橙预览 */
+.theme-preview-warm { background: #fff8f3; }
+.theme-preview-warm .tp-bar { background: linear-gradient(135deg, #f97316, #fb923c); }
+.theme-preview-warm .tp-hero { background: linear-gradient(135deg, #fff0e6, #fff5f0); }
+.theme-preview-warm .tp-card { background: #fff; box-shadow: 0 2rpx 8rpx rgba(255,107,107,0.08); }
+
+/* 极简灰预览 */
+.theme-preview-minimal { background: #fafafa; }
+.theme-preview-minimal .tp-bar { background: #404040; }
+.theme-preview-minimal .tp-hero { background: #f5f5f5; }
+.theme-preview-minimal .tp-card { background: #fff; border: 1rpx solid #e0e0e0; }
+
+.theme-name {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: var(--color-text-bold);
+}
+.theme-desc {
+  font-size: 20rpx;
+  color: var(--color-subtitle);
+  margin-top: 4rpx;
+}

@@ -1,5 +1,6 @@
 const { getDocs, setDocs, getNotes, setNotes, generateId } = require('../../utils/storage')
 const ai = require('../../utils/ai')
+const { THEMES, THEME_KEYS, setTheme, getTheme, getThemeClass } = require('../../utils/theme')
 
 const buildItem = (title, content, type) => {
   const aiResult = ai.processContent(content)
@@ -13,6 +14,10 @@ Page({
     docCount: 0,
     noteCount: 0,
     qaCount: 0,
+    currentTheme: 'default',
+    themeClass: '',
+    themeKeys: THEME_KEYS,
+    themes: THEMES,
     icons: {
       doc: IC + '/file-text.svg', note: IC + '/edit-3.svg', qa: IC + '/message-circle.svg',
       graph: IC + '/network.svg', database: IC + '/database.svg', trash: IC + '/trash-2.svg',
@@ -25,8 +30,17 @@ Page({
     this.setData({
       docCount: (getDocs() || []).length,
       noteCount: (getNotes() || []).length,
-      qaCount: qaCount
+      qaCount: qaCount,
+      currentTheme: getTheme(),
+      themeClass: getThemeClass()
     })
+  },
+  onThemeChange(e) {
+    const key = e.currentTarget.dataset.key
+    if (!key || key === this.data.currentTheme) return
+    setTheme(key)
+    this.setData({ currentTheme: key, themeClass: getThemeClass() })
+    wx.showToast({ title: '已切换为' + THEMES[key].name, icon: 'none' })
   },
   onLoadDemo() {
     // 检查是否已导入过演示数据，避免重复

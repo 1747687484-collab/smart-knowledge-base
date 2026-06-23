@@ -1,5 +1,6 @@
 const storage = require('../../utils/storage')
 const graphLib = require('../../utils/graph')
+const { getThemeClass } = require('../../utils/theme')
 
 const ENTITY_GROUPS = new Set(['项目', '组织', '角色', '时间', '术语', '地点', '阶段'])
 
@@ -92,10 +93,11 @@ const layoutForce = function (nodes, edges) {
 
 const IC = '/assets/icons/svg'
 Page({
-  data: { mode: 'all', docId: '', graphType: 'all', layout: 'force', nodeList: [], edgeList: [], selectedNode: null, selectedEdge: null, icons: { graph: IC + '/network.svg', export: IC + '/copy.svg', tag: IC + '/tag.svg', entity: IC + '/git-branch.svg', layers: IC + '/layers.svg' } },
+  data: { mode: 'all', docId: '', graphType: 'all', layout: 'force', nodeList: [], edgeList: [], selectedNode: null, selectedEdge: null, themeClass: '', icons: { graph: IC + '/network.svg', export: IC + '/copy.svg', tag: IC + '/tag.svg', entity: IC + '/git-branch.svg', layers: IC + '/layers.svg' } },
   _rawNodes: null,
   _rawEdges: null,
   onLoad: function (options) {
+    this.setData({ themeClass: getThemeClass() })
     if (options && options.docId) {
       this.setData({ docId: options.docId, mode: 'doc' })
     }

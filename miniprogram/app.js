@@ -1,5 +1,14 @@
 App({
+  globalData: {
+    theme: 'default' // default | dark | warm | minimal
+  },
   onLaunch() {
+    // 加载主题偏好
+    try {
+      const saved = wx.getStorageSync('kb_theme')
+      if (saved) this.globalData.theme = saved
+    } catch (e) {}
+    // 初始化存储
     try {
       if (wx.getStorageSync('kb_docs') == null) wx.setStorageSync('kb_docs', [])
       if (wx.getStorageSync('kb_notes') == null) wx.setStorageSync('kb_notes', [])

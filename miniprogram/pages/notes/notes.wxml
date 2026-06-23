@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container {{themeClass}}">
   <view class="card hero-card">
     <view class="row-between">
       <view class="icon-row">

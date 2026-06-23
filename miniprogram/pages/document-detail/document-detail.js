@@ -1,6 +1,7 @@
 const storage = require('../../utils/storage')
 const ai = require('../../utils/ai')
 const { formatDate } = require('../../utils/date')
+const { getThemeClass } = require('../../utils/theme')
 
 const IC = '/assets/icons/svg'
 Page({
@@ -8,6 +9,7 @@ Page({
     id: '',
     type: '',
     notFound: false,
+    themeClass: '',
     expandedChunks: {},
     related: [],
     icons: {
@@ -19,6 +21,7 @@ Page({
     item: { title: '', fileType: '', createdText: '', summary: '', keywords: [], tags: [], entities: [], chunks: [] }
   },
   onLoad: function (options) {
+    this.setData({ themeClass: getThemeClass() })
     const id = options && options.id
     const type = (options && options.type) || 'doc'
     const target = storage.findById(id)

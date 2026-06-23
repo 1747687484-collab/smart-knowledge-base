@@ -1,5 +1,6 @@
 const { getDocs, getNotes } = require('../../utils/storage')
 const { formatDate } = require('../../utils/date')
+const { getThemeClass } = require('../../utils/theme')
 const IC = '/assets/icons/svg'
 
 Page({
@@ -7,6 +8,7 @@ Page({
     docs: [],
     notes: [],
     qaCount: 0,
+    themeClass: '',
     icons: {
       doc: IC + '/file-text.svg',
       note: IC + '/edit-3.svg',
@@ -45,6 +47,6 @@ Page({
         preview: (d.summary || d.content || '').slice(0, 60)
       }
     })
-    this.setData({ docs: docs, notes: notes, qaCount: qaCount, docCount: allDocs.length, noteCount: allNotes.length, tagCount: tagCount })
+    this.setData({ docs: docs, notes: notes, qaCount: qaCount, docCount: allDocs.length, noteCount: allNotes.length, tagCount: tagCount, themeClass: getThemeClass() })
   }
 })

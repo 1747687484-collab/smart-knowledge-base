@@ -1,6 +1,7 @@
 const { getDocs, addDoc, removeDoc, toggleDocStar, sortItems, generateId, checkStorageQuota } = require('../../utils/storage')
 const ai = require('../../utils/ai')
 const { filterByKeyword, prepareListItem } = require('../../utils/search')
+const { getThemeClass } = require('../../utils/theme')
 
 const guessType = function (name) {
   if (!name) return '文本'
@@ -15,9 +16,9 @@ const guessType = function (name) {
 const IC = '/assets/icons/svg'
 
 Page({
-  data: { list: [], tab: 'all', searchKey: '', icons: { upload: IC + '/upload.svg', paste: IC + '/clipboard-paste.svg', search: IC + '/search.svg', doc: IC + '/file-text.svg', brain: IC + '/brain.svg', star: IC + '/star.svg' } },
+  data: { list: [], tab: 'all', searchKey: '', themeClass: '', icons: { upload: IC + '/upload.svg', paste: IC + '/clipboard-paste.svg', search: IC + '/search.svg', doc: IC + '/file-text.svg', brain: IC + '/brain.svg', star: IC + '/star.svg' } },
   _searchTimer: null,
-  onShow: function () { this.refresh() },
+  onShow: function () { this.setData({ themeClass: getThemeClass() }); this.refresh() },
   onSearchInput: function (e) {
     var self = this
     this.setData({ searchKey: (e.detail.value || '').trim() })

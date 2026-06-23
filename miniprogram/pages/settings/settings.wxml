@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container {{themeClass}}">
   <view class="card hero-card">
     <view class="icon-row">
       <image class="icon-lg" src="{{icons.settings}}" mode="aspectFit" />
@@ -23,6 +23,24 @@
     <view class="stat-item">
       <view class="stat-num">{{qaCount}}</view>
       <view class="stat-label">问答</view>
+    </view>
+  </view>
+
+  <view class="section-title">主题风格</view>
+  <view class="card theme-picker">
+    <view class="theme-grid">
+      <view wx:for="{{themeKeys}}" wx:key="*this" class="theme-option {{currentTheme === item ? 'theme-active' : ''}}" bindtap="onThemeChange" data-key="{{item}}">
+        <view class="theme-preview theme-preview-{{item}}">
+          <view class="tp-bar"></view>
+          <view class="tp-hero"></view>
+          <view class="tp-row">
+            <view class="tp-card"></view>
+            <view class="tp-card"></view>
+          </view>
+        </view>
+        <view class="theme-name">{{themes[item].name}}</view>
+        <view class="theme-desc">{{themes[item].desc}}</view>
+      </view>
     </view>
   </view>
 

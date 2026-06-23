@@ -1,11 +1,12 @@
 const storage = require('../../utils/storage')
 const ai = require('../../utils/ai')
 const { formatDate } = require('../../utils/date')
+const { getThemeClass } = require('../../utils/theme')
 
 const IC = '/assets/icons/svg'
 Page({
   data: {
-    isEdit: false, id: '', title: '', content: '', focus: false, contentLength: 0,
+    isEdit: false, id: '', title: '', content: '', focus: false, contentLength: 0, themeClass: '',
     related: [],
     icons: {
       save: IC + '/save.svg', back: IC + '/arrow-left.svg', trash: IC + '/trash-2.svg',
@@ -16,6 +17,7 @@ Page({
   },
   _draftTimer: null,
   onLoad: function (options) {
+    this.setData({ themeClass: getThemeClass() })
     if (options && options.id) {
       this.setData({ focus: false })
       const item = storage.findNoteById(options.id)
