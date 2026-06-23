@@ -5,7 +5,7 @@ const { formatDate } = require('../../utils/date')
 const IC = '/assets/icons/svg'
 Page({
   data: {
-    isEdit: false, id: '', title: '', content: '', focus: false,
+    isEdit: false, id: '', title: '', content: '', focus: false, contentLength: 0,
     related: [],
     icons: {
       save: IC + '/save.svg', back: IC + '/arrow-left.svg', trash: IC + '/trash-2.svg',
@@ -21,8 +21,10 @@ Page({
       const item = storage.findNoteById(options.id)
       if (item) {
         const kpt = (item.chunks || []).slice(0, 3).map(function (c) { return c.content.slice(0, 80) }).join('\n\n')
+        const content = item.content || ''
         this.setData({
-          isEdit: true, id: item.id, title: item.title || '', content: item.content || '',
+          isEdit: true, id: item.id, title: item.title || '', content: content,
+          contentLength: content.length,
           summary: item.summary || '', keywords: item.keywords || [], tags: item.tags || [],
           entities: item.entities || [], knowledgePointsText: kpt
         })
@@ -34,7 +36,7 @@ Page({
     this._loadDraft()
   },
   onInputTitle: function (e) { this.setData({ title: e.detail.value }); this._saveDraft() },
-  onInputContent: function (e) { this.setData({ content: e.detail.value }); this._saveDraft() },
+  onInputContent: function (e) { this.setData({ content: e.detail.value, contentLength: (e.detail.value || '').length }); this._saveDraft() },
   _saveDraft: function () {
     const self = this
     if (this._draftTimer) clearTimeout(this._draftTimer)
@@ -48,7 +50,8 @@ Page({
     try {
       const draft = wx.getStorageSync('kb_draft_note')
       if (draft && (draft.title || draft.content) && !this.data.isEdit) {
-        this.setData({ title: draft.title || '', content: draft.content || '' })
+        const draftContent = draft.content || ''
+        this.setData({ title: draft.title || '', content: draftContent, contentLength: draftContent.length })
         wx.showToast({ title: '已恢复草稿', icon: 'none', duration: 1500 })
       }
     } catch (e) {}

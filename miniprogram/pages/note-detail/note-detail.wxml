@@ -17,7 +17,7 @@
   <view class="card">
     <view class="label">正文</view>
     <textarea class="textarea" placeholder="写备忘、会议纪要、待办或学习笔记" value="{{content}}" bindinput="onInputContent" focus="{{focus}}" />
-    <view class="char-count {{content.length > 45000 ? 'char-warn' : ''}}">{{content.length || 0}} / 50000</view>
+    <view class="char-count {{contentLength > 45000 ? 'char-warn' : ''}}">{{contentLength}} / 50000</view>
   </view>
 
   <view class="grid2">
