@@ -8,11 +8,11 @@
   text-align: center;
   padding: 18rpx 0;
   border-radius: 14rpx;
-  background: #eef2ff;
-  color: #2563eb;
+  background: var(--bg-tab);
+  color: var(--color-primary);
   font-weight: 600;
 }
 .tab.active {
-  background: #2563eb;
+  background: var(--color-primary);
   color: #ffffff;
 }
