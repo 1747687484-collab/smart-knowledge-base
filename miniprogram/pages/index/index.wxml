@@ -16,28 +16,28 @@
 
   <view class="grid2">
     <navigator class="card icon-card" url="/pages/documents/documents" aria-label="文档管理">
-      <view class="feature-icon" style="background: #eef2ff;">
+      <view class="feature-icon fi-blue">
         <image src="{{icons.doc}}" mode="aspectFit" aria-label="文档图标" />
       </view>
       <view class="title">文档</view>
       <view class="subtitle">上传报告、资料、合同</view>
     </navigator>
     <navigator class="card icon-card" url="/pages/notes/notes" aria-label="笔记管理">
-      <view class="feature-icon" style="background: #ecfeff;">
+      <view class="feature-icon fi-cyan">
         <image src="{{icons.note}}" mode="aspectFit" aria-label="笔记图标" />
       </view>
       <view class="title">笔记</view>
       <view class="subtitle">记录想法、待办、临时信息</view>
     </navigator>
     <navigator class="card icon-card" url="/pages/qa/qa" aria-label="智能问答">
-      <view class="feature-icon" style="background: #f5f3ff;">
+      <view class="feature-icon fi-purple">
         <image src="{{icons.qa}}" mode="aspectFit" aria-label="问答图标" />
       </view>
       <view class="title">问答</view>
       <view class="subtitle">基于已有内容提问</view>
     </navigator>
     <navigator class="card icon-card" url="/pages/graph/graph" aria-label="知识图谱">
-      <view class="feature-icon" style="background: #fef3c7;">
+      <view class="feature-icon fi-amber">
         <image src="{{icons.graph}}" mode="aspectFit" aria-label="图谱图标" />
       </view>
       <view class="title">图谱</view>

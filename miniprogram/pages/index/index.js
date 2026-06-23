@@ -1,6 +1,6 @@
 const { getDocs, getNotes } = require('../../utils/storage')
 const { formatDate } = require('../../utils/date')
-const { getThemeClass } = require('../../utils/theme')
+const { getThemeClass, applyPageTheme } = require('../../utils/theme')
 const IC = '/assets/icons/svg'
 
 Page({
@@ -48,5 +48,6 @@ Page({
       }
     })
     this.setData({ docs: docs, notes: notes, qaCount: qaCount, docCount: allDocs.length, noteCount: allNotes.length, tagCount: tagCount, themeClass: getThemeClass() })
+    applyPageTheme()
   }
 })

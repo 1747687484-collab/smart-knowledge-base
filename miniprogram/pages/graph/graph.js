@@ -1,6 +1,6 @@
 const storage = require('../../utils/storage')
 const graphLib = require('../../utils/graph')
-const { getThemeClass } = require('../../utils/theme')
+const { getThemeClass, applyPageTheme } = require('../../utils/theme')
 
 const ENTITY_GROUPS = new Set(['项目', '组织', '角色', '时间', '术语', '地点', '阶段'])
 
@@ -98,6 +98,7 @@ Page({
   _rawEdges: null,
   onLoad: function (options) {
     this.setData({ themeClass: getThemeClass() })
+    applyPageTheme()
     if (options && options.docId) {
       this.setData({ docId: options.docId, mode: 'doc' })
     }

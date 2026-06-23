@@ -1,6 +1,6 @@
 const { getDocs, setDocs, getNotes, setNotes, generateId } = require('../../utils/storage')
 const ai = require('../../utils/ai')
-const { THEMES, THEME_KEYS, setTheme, getTheme, getThemeClass } = require('../../utils/theme')
+const { THEMES, THEME_KEYS, setTheme, getTheme, getThemeClass, applyPageTheme } = require('../../utils/theme')
 
 const buildItem = (title, content, type) => {
   const aiResult = ai.processContent(content)
@@ -34,12 +34,14 @@ Page({
       currentTheme: getTheme(),
       themeClass: getThemeClass()
     })
+    applyPageTheme()
   },
   onThemeChange(e) {
     const key = e.currentTarget.dataset.key
     if (!key || key === this.data.currentTheme) return
     setTheme(key)
     this.setData({ currentTheme: key, themeClass: getThemeClass() })
+    applyPageTheme()
     wx.showToast({ title: '已切换为' + THEMES[key].name, icon: 'none' })
   },
   onLoadDemo() {

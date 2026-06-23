@@ -1,6 +1,6 @@
 const storage = require('../../utils/storage')
 const ai = require('../../utils/ai')
-const { getThemeClass } = require('../../utils/theme')
+const { getThemeClass, applyPageTheme } = require('../../utils/theme')
 
 const IC = '/assets/icons/svg'
 Page({
@@ -13,6 +13,7 @@ Page({
   _chunkCacheTime: 0,
   onShow: function () {
     this.setData({ themeClass: getThemeClass() })
+    applyPageTheme()
     this.syncDocTitle()
     this.loadHistory()
     this._updateExamples()

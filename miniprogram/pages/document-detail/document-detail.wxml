@@ -33,14 +33,14 @@
 
   <view class="grid2">
     <navigator class="card icon-card" url="/pages/graph/graph?docId={{id}}">
-      <view class="feature-icon" style="background:#fef3c7;">
+      <view class="feature-icon fi-amber">
         <image src="{{icons.graph}}" mode="aspectFit" />
       </view>
       <view class="title">查看图谱</view>
       <view class="subtitle">查看实体与关系</view>
     </navigator>
     <navigator class="card icon-card" url="/pages/qa/qa?docId={{id}}">
-      <view class="feature-icon" style="background:#f5f3ff;">
+      <view class="feature-icon fi-purple">
         <image src="{{icons.qa}}" mode="aspectFit" />
       </view>
       <view class="title">针对这份文档提问</view>
@@ -122,7 +122,7 @@
   <view class="card">
     <view class="icon-row" style="margin-bottom:12rpx;">
       <image class="icon-sm" src="{{icons.trash}}" mode="aspectFit" />
-      <view class="title" style="color:#dc2626;">危险操作</view>
+      <view class="title text-danger">危险操作</view>
     </view>
     <view class="subtitle">删除后不可恢复</view>
     <button class="ghost" style="margin-top: 16rpx; width: 100%;" bindtap="onDelete">删除该文档</button>

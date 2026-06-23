@@ -88,7 +88,7 @@
     <view class="card">
       <view class="icon-row" style="margin-bottom:12rpx;">
         <image class="icon-sm" src="{{icons.trash}}" mode="aspectFit" />
-        <view class="title" style="color:#dc2626;">危险操作</view>
+        <view class="title text-danger">危险操作</view>
       </view>
       <view class="subtitle">删除后不可恢复</view>
       <button class="ghost" style="margin-top: 16rpx; width: 100%;" bindtap="onDelete">删除该笔记</button>

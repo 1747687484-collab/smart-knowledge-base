@@ -98,7 +98,7 @@
     <view class="icon-row" style="margin-bottom:12rpx;">
       <image class="icon-sm" src="{{icons.trash}}" mode="aspectFit" />
       <view>
-        <view class="title" style="color:#dc2626;">清空全部数据</view>
+        <view class="title text-danger">清空全部数据</view>
         <view class="subtitle">清除所有本地文档、笔记和问答历史</view>
       </view>
     </view>

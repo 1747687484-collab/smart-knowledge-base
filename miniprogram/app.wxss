@@ -23,6 +23,7 @@ page {
   --color-tag: #0f766e;
   --color-card-shadow: rgba(16, 24, 40, 0.04);
   --color-primary-ghost: #374151;
+  --color-danger: #dc2626;
 }
 
 /* 主题：默认蓝 */
@@ -53,6 +54,7 @@ page {
   --color-tag: #5eead4;
   --color-card-shadow: rgba(0, 0, 0, 0.3);
   --color-primary-ghost: #c7d2fe;
+  --color-danger: #f87171;
 }
 
 /* 主题：暖橙 */
@@ -80,6 +82,7 @@ page {
   --color-tag: #0f766e;
   --color-card-shadow: rgba(255, 107, 107, 0.06);
   --color-primary-ghost: #7c2d12;
+  --color-danger: #ea580c;
 }
 
 /* 主题：极简灰 */
@@ -107,6 +110,7 @@ page {
   --color-tag: #525252;
   --color-card-shadow: rgba(0, 0, 0, 0.04);
   --color-primary-ghost: #404040;
+  --color-danger: #dc2626;
 }
 
 /* ========== 基础样式（使用变量） ========== */
@@ -355,6 +359,10 @@ page {
   width: 44rpx;
   height: 44rpx;
 }
+.fi-blue { background: var(--bg-feature1); }
+.fi-cyan { background: var(--bg-feature2); }
+.fi-purple { background: var(--bg-feature3); }
+.fi-amber { background: var(--bg-feature4); }
 .step-icon {
   display: inline-flex;
   align-items: center;
@@ -413,4 +421,7 @@ page {
   width: 1rpx;
   height: 40rpx;
   background: var(--bg-divider);
+}
+.text-danger {
+  color: var(--color-danger);
 }

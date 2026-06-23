@@ -1,7 +1,7 @@
 const storage = require('../../utils/storage')
 const ai = require('../../utils/ai')
 const { formatDate } = require('../../utils/date')
-const { getThemeClass } = require('../../utils/theme')
+const { getThemeClass, applyPageTheme } = require('../../utils/theme')
 
 const IC = '/assets/icons/svg'
 Page({
@@ -18,6 +18,7 @@ Page({
   _draftTimer: null,
   onLoad: function (options) {
     this.setData({ themeClass: getThemeClass() })
+    applyPageTheme()
     if (options && options.id) {
       this.setData({ focus: false })
       const item = storage.findNoteById(options.id)

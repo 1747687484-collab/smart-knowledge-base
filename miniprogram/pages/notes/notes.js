@@ -1,6 +1,6 @@
 const { getNotes, removeNote, toggleNoteStar, pinNote, sortItems } = require('../../utils/storage')
 const { filterByKeyword, prepareListItem } = require('../../utils/search')
-const { getThemeClass } = require('../../utils/theme')
+const { getThemeClass, applyPageTheme } = require('../../utils/theme')
 
 const IC = '/assets/icons/svg'
 Page({
@@ -40,6 +40,7 @@ Page({
     const filtered = filterByKeyword(all, key)
     const list = filtered.map(d => prepareListItem(d, key))
     this.setData({ list, themeClass: getThemeClass() })
+    applyPageTheme()
   },
   onDelete(e) {
     const { id } = e.currentTarget.dataset
