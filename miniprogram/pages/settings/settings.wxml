@@ -1,0 +1,99 @@
+<view class="container">
+  <view class="card hero-card">
+    <view class="icon-row">
+      <image class="icon-lg" src="{{icons.settings}}" mode="aspectFit" />
+      <view>
+        <view class="title">设置</view>
+        <view class="subtitle">当前为本地演示版，数据保存在小程序缓存中</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="stats-bar card" wx:if="{{docCount + noteCount + qaCount > 0}}">
+    <view class="stat-item">
+      <view class="stat-num">{{docCount}}</view>
+      <view class="stat-label">文档</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-num">{{noteCount}}</view>
+      <view class="stat-label">笔记</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-num">{{qaCount}}</view>
+      <view class="stat-label">问答</view>
+    </view>
+  </view>
+
+  <view class="section-title">常用入口</view>
+  <navigator class="card" url="/pages/documents/documents">
+    <view class="icon-row">
+      <image class="icon" src="{{icons.doc}}" mode="aspectFit" />
+      <view style="flex:1;">
+        <view class="title">文档管理</view>
+        <view class="subtitle">上传资料、查看摘要、关键词和知识卡片</view>
+      </view>
+    </view>
+  </navigator>
+  <navigator class="card" url="/pages/notes/notes">
+    <view class="icon-row">
+      <image class="icon" src="{{icons.note}}" mode="aspectFit" />
+      <view style="flex:1;">
+        <view class="title">笔记管理</view>
+        <view class="subtitle">记录想法、待办和临时信息</view>
+      </view>
+    </view>
+  </navigator>
+  <navigator class="card" url="/pages/qa/qa">
+    <view class="icon-row">
+      <image class="icon" src="{{icons.qa}}" mode="aspectFit" />
+      <view style="flex:1;">
+        <view class="title">智能问答</view>
+        <view class="subtitle">基于已收录内容进行提问</view>
+      </view>
+    </view>
+  </navigator>
+  <navigator class="card" url="/pages/graph/graph">
+    <view class="icon-row">
+      <image class="icon" src="{{icons.graph}}" mode="aspectFit" />
+      <view style="flex:1;">
+        <view class="title">知识图谱</view>
+        <view class="subtitle">查看知识结构、实体与关系</view>
+      </view>
+    </view>
+  </navigator>
+
+  <view class="section-title">数据</view>
+  <view class="card">
+    <view class="icon-row" style="margin-bottom:12rpx;">
+      <image class="icon" src="{{icons.database}}" mode="aspectFit" />
+      <view>
+        <view class="title">导入示例数据</view>
+        <view class="subtitle">用于快速体验文档摘要、标签、问答和图谱</view>
+      </view>
+    </view>
+    <button class="primary" style="width: 100%;" bindtap="onLoadDemo">一键导入示例</button>
+  </view>
+
+  <view class="card">
+    <view class="icon-row" style="margin-bottom:12rpx;">
+      <image class="icon-sm" src="{{icons.trash}}" mode="aspectFit" />
+      <view>
+        <view class="title" style="color:#dc2626;">清空全部数据</view>
+        <view class="subtitle">清除所有本地文档、笔记和问答历史</view>
+      </view>
+    </view>
+    <button class="ghost" style="width: 100%;" bindtap="onClear">清空数据</button>
+  </view>
+
+  <view class="card">
+    <view class="icon-row">
+      <image class="icon" src="{{icons.info}}" mode="aspectFit" />
+      <view>
+        <view class="title">版本说明</view>
+        <view class="subtitle">本地智能知识库 MVP 版，后续可接入云开发与更强 AI 能力</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,98 @@
+<view class="container">
+  <view class="card hero-card">
+    <view class="icon-row">
+      <image class="icon-lg" src="{{icons.graph}}" mode="aspectFit" />
+      <view>
+        <view class="title">知识图谱</view>
+        <view class="subtitle">查看当前文档或整体知识库中的关键实体与关系</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="grid2" style="margin-bottom: 12rpx;">
+    <button class="{{mode === 'all' ? 'primary' : 'ghost'}}" bindtap="onModeAll">整体知识库</button>
+    <button class="{{mode === 'doc' ? 'primary' : 'ghost'}}" bindtap="onModeDoc">当前文档</button>
+  </view>
+
+  <view wx:if="{{!nodeList.length}}" class="card" style="text-align: center; padding: 60rpx 24rpx;">
+    <view class="title">暂无图谱数据</view>
+    <view class="subtitle">先在「文档」或「笔记」中收录内容，再回来看知识图谱</view>
+    <navigator class="primary btn" style="margin-top: 20rpx;" url="/pages/documents/documents">去收录文档</navigator>
+  </view>
+
+  <!-- 图谱可视化 - 放在首屏可见位置 -->
+  <view class="card" wx:if="{{nodeList.length}}">
+    <view class="label">图谱总览</view>
+    <view class="graph-board">
+      <canvas type="2d" id="graphCanvas" class="graph-canvas"></canvas>
+      <view class="graph-node" wx:for="{{nodeList}}" wx:key="id" style="left: {{item.x}}rpx; top: {{item.y}}rpx; background: {{item.bg}};">
+        <text bindtap="onNodeTap" bindlongpress="onNodeLongPress" data-id="{{item.id}}" data-name="{{item.name}}">{{item.shortName}}</text>
+      </view>
+    </view>
+    <view class="hint">点击节点查看详情，为保证流畅最多展示 18 个节点</view>
+  </view>
+
+  <!-- 布局切换 -->
+  <view class="tabs" wx:if="{{nodeList.length}}">
+    <view class="{{layout === 'force' ? 'tab active' : 'tab'}}" bindtap="onLayout" data-l="force">力导向</view>
+    <view class="{{layout === 'circle' ? 'tab active' : 'tab'}}" bindtap="onLayout" data-l="circle">环形</view>
+  </view>
+
+  <view class="tabs" wx:if="{{nodeList.length}}">
+    <view class="{{graphType === 'all' ? 'tab active' : 'tab'}}" bindtap="onFilterType" data-t="all">全部</view>
+    <view class="{{graphType === 'tag' ? 'tab active' : 'tab'}}" bindtap="onFilterType" data-t="tag">标签</view>
+    <view class="{{graphType === 'entity' ? 'tab active' : 'tab'}}" bindtap="onFilterType" data-t="entity">实体</view>
+    <view class="{{graphType === 'time' ? 'tab active' : 'tab'}}" bindtap="onFilterType" data-t="time">时间</view>
+  </view>
+
+  <view class="grid2" wx:if="{{nodeList.length}}" style="margin-bottom: 12rpx;">
+    <button class="ghost icon-row" style="justify-content:center;" bindtap="onExportText">
+      <image class="icon-sm" src="{{icons.export}}" mode="aspectFit" style="margin-right:8rpx;" />
+      导出图谱
+    </button>
+  </view>
+
+  <block wx:if="{{selectedNode}}">
+    <view class="card">
+      <view class="row-between">
+        <view class="title">{{selectedNode.name}}</view>
+        <view class="action-link" bindtap="onCloseNode">关闭</view>
+      </view>
+      <view class="subtitle">类型：{{selectedNode.group}}</view>
+      <view wx:if="{{selectedNode.relations.length}}" style="margin-top: 12rpx;">
+        <view class="label">关联关系</view>
+        <view class="body-text" wx:for="{{selectedNode.relations}}" wx:key="*this">{{item}}</view>
+      </view>
+    </view>
+  </block>
+
+  <view class="card" wx:if="{{nodeList.length}}">
+    <view class="label">关键节点</view>
+    <view class="grid3">
+      <view class="card" wx:for="{{nodeList}}" wx:key="id" bindtap="onNodeTap" data-id="{{item.id}}">
+        <view class="title ellipsis">{{item.name}}</view>
+        <view class="subtitle">{{item.group}}</view>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{selectedEdge}}">
+    <view class="card">
+      <view class="row-between">
+        <view class="title">{{selectedEdge.from}} → {{selectedEdge.to}}</view>
+        <view class="action-link" bindtap="onCloseEdge">关闭</view>
+      </view>
+      <view class="subtitle">关系：{{selectedEdge.label}}</view>
+    </view>
+  </block>
+
+  <view class="card" wx:if="{{edgeList.length}}">
+    <view class="label">关系列表</view>
+    <block wx:for="{{edgeList}}" wx:key="index">
+      <view class="card source-card" bindtap="onEdgeTap" data-idx="{{index}}">
+        <view class="title ellipsis">{{item.fromName}} → {{item.toName}}</view>
+        <view class="subtitle">{{item.label}}</view>
+      </view>
+    </block>
+  </view>
+</view>

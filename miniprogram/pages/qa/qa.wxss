@@ -1,0 +1,24 @@
+.scope-tag {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #2563eb;
+  font-weight: 600;
+}
+.scope-switch {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+.switch-item {
+  flex: 1;
+  text-align: center;
+  padding: 18rpx 0;
+  border-radius: 14rpx;
+  background: #eef2ff;
+  color: #2563eb;
+  font-weight: 600;
+}
+.switch-item.active {
+  background: #2563eb;
+  color: #ffffff;
+}

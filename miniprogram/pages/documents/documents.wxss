@@ -1,0 +1,18 @@
+.tabs {
+  display: flex;
+  gap: 16rpx;
+  margin: 16rpx 0;
+}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 18rpx 0;
+  border-radius: 14rpx;
+  background: #eef2ff;
+  color: #2563eb;
+  font-weight: 600;
+}
+.tab.active {
+  background: #2563eb;
+  color: #ffffff;
+}

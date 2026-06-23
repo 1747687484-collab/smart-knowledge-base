@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/documents/documents",
+    "pages/document-detail/document-detail",
+    "pages/notes/notes",
+    "pages/note-detail/note-detail",
+    "pages/qa/qa",
+    "pages/graph/graph",
+    "pages/settings/settings"
+  ],
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "custom": false,
+    "color": "#6b7280",
+    "selectedColor": "#2563eb",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/icons/home-inactive.png",
+        "selectedIconPath": "assets/icons/home.png"
+      },
+      {
+        "pagePath": "pages/documents/documents",
+        "text": "文档",
+        "iconPath": "assets/icons/doc-inactive.png",
+        "selectedIconPath": "assets/icons/doc.png"
+      },
+      {
+        "pagePath": "pages/notes/notes",
+        "text": "笔记",
+        "iconPath": "assets/icons/note-inactive.png",
+        "selectedIconPath": "assets/icons/note.png"
+      },
+      {
+        "pagePath": "pages/qa/qa",
+        "text": "问答",
+        "iconPath": "assets/icons/qa-inactive.png",
+        "selectedIconPath": "assets/icons/qa.png"
+      }
+    ]
+  }
+}

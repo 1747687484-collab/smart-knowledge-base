@@ -1,0 +1,131 @@
+<view class="container">
+  <block wx:if="{{notFound}}">
+    <view class="card" style="text-align: center; padding: 80rpx 24rpx;">
+      <view class="title">记录未找到</view>
+      <view class="subtitle">该文档或笔记可能已被删除</view>
+      <navigator class="primary btn" style="margin-top: 24rpx;" url="/pages/index/index">返回首页</navigator>
+    </view>
+  </block>
+  <block wx:else>
+  <view class="card hero-card">
+    <view class="icon-row">
+      <image class="icon-lg" src="{{icons.doc}}" mode="aspectFit" />
+      <view>
+        <view class="title">{{item.title || '未命名文档'}}</view>
+        <view class="subtitle">{{item.fileType}} · 创建于 {{item.createdText}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="row-between">
+      <view class="icon-row">
+        <image class="label-icon" src="{{icons.brain}}" mode="aspectFit" />
+        <view class="label" style="margin-bottom:0;">智能摘要</view>
+      </view>
+      <view class="action-link icon-row" bindtap="onCopySummary">
+        <image class="icon-sm" src="{{icons.copy}}" mode="aspectFit" />
+        复制
+      </view>
+    </view>
+    <view class="body-text" style="margin-top:12rpx;">{{item.summary || '内容过短或未识别到摘要'}}</view>
+  </view>
+
+  <view class="grid2">
+    <navigator class="card icon-card" url="/pages/graph/graph?docId={{id}}">
+      <view class="feature-icon" style="background:#fef3c7;">
+        <image src="{{icons.graph}}" mode="aspectFit" />
+      </view>
+      <view class="title">查看图谱</view>
+      <view class="subtitle">查看实体与关系</view>
+    </navigator>
+    <navigator class="card icon-card" url="/pages/qa/qa?docId={{id}}">
+      <view class="feature-icon" style="background:#f5f3ff;">
+        <image src="{{icons.qa}}" mode="aspectFit" />
+      </view>
+      <view class="title">针对这份文档提问</view>
+      <view class="subtitle">基于这份文档回答</view>
+    </navigator>
+  </view>
+
+  <view class="card">
+    <view class="icon-row" style="margin-bottom:12rpx;">
+      <image class="label-icon" src="{{icons.key}}" mode="aspectFit" />
+      <view class="label" style="margin-bottom:0;">关键词</view>
+    </view>
+    <view>
+      <text class="chip" wx:for="{{item.keywords}}" wx:key="*this">{{item}}</text>
+      <view wx:if="{{!item.keywords.length}}" class="body-text">未提取到关键词</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="icon-row" style="margin-bottom:12rpx;">
+      <image class="label-icon" src="{{icons.tag}}" mode="aspectFit" />
+      <view class="label" style="margin-bottom:0;">标签</view>
+    </view>
+    <view>
+      <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text>
+      <view wx:if="{{!item.tags.length}}" class="body-text">未提取到标签</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="icon-row" style="margin-bottom:12rpx;">
+      <image class="label-icon" src="{{icons.entity}}" mode="aspectFit" />
+      <view class="label" style="margin-bottom:0;">知识实体</view>
+    </view>
+    <block wx:if="{{item.entities.length}}">
+      <view class="grid3">
+        <view class="card" wx:for="{{item.entities}}" wx:key="name">
+          <view class="title ellipsis">{{item.name}}</view>
+          <view class="subtitle">{{item.type}}</view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="body-text">未识别到明显实体</view>
+  </view>
+
+  <view class="card">
+    <view class="row-between">
+      <view class="icon-row">
+        <image class="label-icon" src="{{icons.chunk}}" mode="aspectFit" />
+        <view class="label" style="margin-bottom:0;">知识切片预览</view>
+      </view>
+      <view class="action-link icon-row" bindtap="onCopyContent">
+        <image class="icon-sm" src="{{icons.copy}}" mode="aspectFit" />
+        复制全文
+      </view>
+    </view>
+    <block wx:if="{{item.chunks.length}}">
+      <block wx:for="{{item.chunks}}" wx:key="index">
+        <view class="chunk-item" bindtap="onToggleChunk" data-idx="{{index}}">
+          <view class="subtitle">片段 {{index + 1}}</view>
+          <view class="body-text {{expandedChunks[index] ? '' : 'ellipsis2'}}">{{expandedChunks[index] ? item.content : item.preview}}</view>
+        </view>
+      </block>
+    </block>
+    <view wx:else class="body-text">当前内容较短，未生成切片</view>
+  </view>
+
+  <view class="card" wx:if="{{related.length}}">
+    <view class="icon-row" style="margin-bottom:12rpx;">
+      <image class="label-icon" src="{{icons.link}}" mode="aspectFit" />
+      <view class="label" style="margin-bottom:0;">相关推荐</view>
+    </view>
+    <navigator class="card source-card" wx:for="{{related}}" wx:key="id" url="/pages/document-detail/document-detail?id={{item.id}}&type={{item.type}}">
+      <view class="title ellipsis">{{item.title}}</view>
+      <view class="subtitle">关联度：{{item.score > 10 ? '强' : item.score > 5 ? '中' : '弱'}}</view>
+    </navigator>
+  </view>
+
+  <view class="card">
+    <view class="icon-row" style="margin-bottom:12rpx;">
+      <image class="icon-sm" src="{{icons.trash}}" mode="aspectFit" />
+      <view class="title" style="color:#dc2626;">危险操作</view>
+    </view>
+    <view class="subtitle">删除后不可恢复</view>
+    <button class="ghost" style="margin-top: 16rpx; width: 100%;" bindtap="onDelete">删除该文档</button>
+  </view>
+  </block>
+</view>

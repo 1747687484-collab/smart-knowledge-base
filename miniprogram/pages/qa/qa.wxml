@@ -1,0 +1,87 @@
+<view class="container">
+  <view class="card hero-card">
+    <view class="icon-row">
+      <image class="icon-lg" src="{{icons.qa}}" mode="aspectFit" />
+      <view>
+        <view class="title">智能问答</view>
+        <view class="subtitle">向你的知识库提问，从已收录内容中找到答案</view>
+      </view>
+    </view>
+    <view wx:if="{{docTitle}}" class="scope-tag">当前范围：{{docTitle}}</view>
+  </view>
+
+  <view class="card">
+    <view class="label">问题</view>
+    <input class="input" placeholder="输入问题，例如：这份报告的结论是什么" value="{{question}}" bindinput="onInput" />
+    <view class="scope-switch" wx:if="{{docId}}">
+      <view class="{{onlyDoc ? 'switch-item active' : 'switch-item'}}" bindtap="onToggleScope">仅当前文档</view>
+      <view class="{{onlyDoc ? 'switch-item' : 'switch-item active'}}" bindtap="onToggleAllScope">全库搜索</view>
+    </view>
+    <view style="margin-top: 16rpx; display:flex; gap: 16rpx;">
+      <button class="primary icon-row" style="flex:1;justify-content:center;" bindtap="onAsk">
+        <image class="icon-sm" src="{{icons.search}}" mode="aspectFit" style="margin-right:8rpx;" />
+        提问
+      </button>
+      <button class="ghost" style="flex:1;" bindtap="onClear">清空</button>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="card" style="text-align: center; padding: 40rpx;">
+    <view class="subtitle">正在检索知识库并生成回答…</view>
+  </view>
+
+  <block wx:if="{{answer}}">
+    <view class="card">
+      <view class="icon-row" style="margin-bottom:12rpx;">
+        <image class="label-icon" src="{{icons.brain}}" mode="aspectFit" />
+        <view class="label" style="margin-bottom:0;">回答</view>
+      </view>
+      <view class="body-text">{{answer}}</view>
+      <view style="margin-top: 12rpx; display:flex; gap: 16rpx;">
+        <button class="ghost" style="flex:1;" bindtap="onReask">重新提问</button>
+        <button class="ghost icon-row" style="flex:1;justify-content:center;" bindtap="onCopyAnswer">
+          <image class="icon-sm" src="{{icons.copy}}" mode="aspectFit" style="margin-right:8rpx;" />
+          复制回答
+        </button>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="label">参考来源</view>
+      <block wx:if="{{sources.length}}">
+        <block wx:for="{{sources}}" wx:key="index">
+          <view class="card source-card">
+            <view class="title ellipsis">{{item.sourceTitle}}</view>
+            <view class="subtitle ellipsis2">{{item.content}}</view>
+          </view>
+        </block>
+      </block>
+      <view wx:else class="body-text">未找到明确来源</view>
+    </view>
+  </block>
+
+  <block wx:if="{{history.length}}">
+    <view class="card">
+      <view class="row-between">
+        <view class="icon-row">
+          <image class="label-icon" src="{{icons.database}}" mode="aspectFit" />
+          <view class="label" style="margin-bottom:0;">历史问答</view>
+        </view>
+        <view class="action-link" bindtap="onClearHistory">清空</view>
+      </view>
+      <block wx:for="{{history}}" wx:key="time">
+        <view class="card source-card" bindtap="onTapExample" data-q="{{item.q}}">
+          <view class="title ellipsis">{{item.q}}</view>
+          <view class="subtitle ellipsis2">{{item.a}}</view>
+        </view>
+      </block>
+    </view>
+  </block>
+
+  <view class="card">
+    <view class="label">示例问题</view>
+    <view class="chip-list">
+      <text class="chip" wx:for="{{examples}}" wx:key="*this" bindtap="onTapExample" data-q="{{item}}">{{item}}</text>
+    </view>
+  </view>
+</view>

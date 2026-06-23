@@ -1,0 +1,28 @@
+.graph-board {
+  position: relative;
+  width: 100%;
+  height: 660rpx;
+  background: #fff8fb;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.graph-node {
+  position: absolute;
+  min-width: 120rpx;
+  padding: 16rpx 18rpx;
+  background: #dbeafe;
+  border-radius: 999rpx;
+  color: #0f172a;
+  font-size: 24rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 22rpx rgba(15, 23, 42, 0.08);
+  z-index: 1;
+}
+.graph-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}

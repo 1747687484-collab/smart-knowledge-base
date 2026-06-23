@@ -1,0 +1,97 @@
+<view class="container">
+  <view class="card hero-card">
+    <view class="icon-row">
+      <image class="icon-lg" src="{{icons.note}}" mode="aspectFit" />
+      <view>
+        <view class="title">{{isEdit ? '编辑笔记' : '新建笔记'}}</view>
+        <view class="subtitle">写完保存后，系统会自动提取关键词、标签和知识卡片</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="label">标题</view>
+    <input class="input" placeholder="给这条内容起个名字" value="{{title}}" bindinput="onInputTitle" />
+  </view>
+
+  <view class="card">
+    <view class="label">正文</view>
+    <textarea class="textarea" placeholder="写备忘、会议纪要、待办或学习笔记" value="{{content}}" bindinput="onInputContent" focus="{{focus}}" />
+    <view class="char-count {{content.length > 45000 ? 'char-warn' : ''}}">{{content.length || 0}} / 50000</view>
+  </view>
+
+  <view class="grid2">
+    <button class="ghost icon-row" style="justify-content:center;" bindtap="onBack">
+      <image class="icon-sm" src="{{icons.back}}" mode="aspectFit" style="margin-right:8rpx;" />
+      返回
+    </button>
+    <button class="primary icon-row" style="justify-content:center;" bindtap="onSave">
+      <image class="icon-sm" src="{{icons.save}}" mode="aspectFit" style="margin-right:8rpx;" />
+      保存
+    </button>
+  </view>
+
+  <block wx:if="{{related.length}}">
+    <view class="card">
+      <view class="icon-row" style="margin-bottom:12rpx;">
+        <image class="label-icon" src="{{icons.link}}" mode="aspectFit" />
+        <view class="label" style="margin-bottom:0;">相关推荐</view>
+      </view>
+      <navigator class="card source-card" wx:for="{{related}}" wx:key="id" url="/pages/document-detail/document-detail?id={{item.id}}&type={{item.type}}">
+        <view class="title ellipsis">{{item.title}}</view>
+        <view class="subtitle">关联度：{{item.score > 10 ? '强' : item.score > 5 ? '中' : '弱'}}</view>
+      </navigator>
+    </view>
+  </block>
+
+  <block wx:if="{{isEdit}}">
+    <view class="section-title">自动提取结果</view>
+
+    <view class="card">
+      <view class="icon-row" style="margin-bottom:12rpx;">
+        <image class="label-icon" src="{{icons.brain}}" mode="aspectFit" />
+        <view class="label" style="margin-bottom:0;">摘要</view>
+      </view>
+      <view class="body-text">{{summary || '保存后自动生成'}}</view>
+    </view>
+
+    <view class="card">
+      <view class="icon-row" style="margin-bottom:12rpx;">
+        <image class="label-icon" src="{{icons.key}}" mode="aspectFit" />
+        <view class="label" style="margin-bottom:0;">关键词</view>
+      </view>
+      <view>
+        <text class="chip" wx:for="{{keywords}}" wx:key="*this">{{item}}</text>
+        <view wx:if="{{!keywords.length}}" class="body-text">暂无关键词</view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="icon-row" style="margin-bottom:12rpx;">
+        <image class="label-icon" src="{{icons.tag}}" mode="aspectFit" />
+        <view class="label" style="margin-bottom:0;">标签</view>
+      </view>
+      <view>
+        <text class="tag" wx:for="{{tags}}" wx:key="*this">{{item}}</text>
+        <view wx:if="{{!tags.length}}" class="body-text">暂无标签</view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="icon-row" style="margin-bottom:12rpx;">
+        <image class="label-icon" src="{{icons.brain}}" mode="aspectFit" />
+        <view class="label" style="margin-bottom:0;">知识要点</view>
+      </view>
+      <view class="body-text ellipsis2">{{knowledgePointsText || '保存后自动生成'}}</view>
+    </view>
+
+    <view class="card">
+      <view class="icon-row" style="margin-bottom:12rpx;">
+        <image class="icon-sm" src="{{icons.trash}}" mode="aspectFit" />
+        <view class="title" style="color:#dc2626;">危险操作</view>
+      </view>
+      <view class="subtitle">删除后不可恢复</view>
+      <button class="ghost" style="margin-top: 16rpx; width: 100%;" bindtap="onDelete">删除该笔记</button>
+    </view>
+  </block>
+</view>

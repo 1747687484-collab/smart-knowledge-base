@@ -1,0 +1,60 @@
+<view class="container">
+  <view class="card hero-card">
+    <view class="icon-row">
+      <image class="icon-lg" src="{{icons.doc}}" mode="aspectFit" />
+      <view>
+        <view class="title">文档库</view>
+        <view class="subtitle">上传报告、资料、合同，自动生成摘要、标签与知识卡片</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="grid2">
+    <button class="primary icon-row" style="justify-content:center;" bindtap="onChooseFile">
+      <image class="icon-sm" src="{{icons.upload}}" mode="aspectFit" style="margin-right:8rpx;" />
+      上传文档
+    </button>
+    <button class="ghost icon-row" style="justify-content:center;" bindtap="onPasteText">
+      <image class="icon-sm" src="{{icons.paste}}" mode="aspectFit" style="margin-right:8rpx;" />
+      粘贴文本
+    </button>
+  </view>
+
+  <view class="search-bar">
+    <image class="icon-sm" src="{{icons.search}}" mode="aspectFit" style="margin-left:16rpx;" />
+    <input class="search-input" placeholder="搜索文档标题或内容" value="{{searchKey}}" bindinput="onSearchInput" bindconfirm="onSearch" />
+    <view class="search-clear" wx:if="{{searchKey}}" bindtap="onSearchClear">清除</view>
+  </view>
+
+  <view class="tabs">
+    <view class="{{tab === 'all' ? 'tab active' : 'tab'}}" bindtap="onTab" data-t="all">全部</view>
+    <view class="{{tab === 'recent' ? 'tab active' : 'tab'}}" bindtap="onTab" data-t="recent">最近</view>
+  </view>
+
+  <block wx:if="{{list.length}}">
+    <navigator class="card" wx:for="{{list}}" wx:key="id" url="/pages/document-detail/document-detail?id={{item.id}}&type=doc" bindlongpress="onLongPress" data-id="{{item.id}}">
+      <view class="row-between">
+        <view class="icon-row" style="flex:1;min-width:0;">
+          <image class="icon-sm" src="{{icons.doc}}" mode="aspectFit" />
+          <view class="title ellipsis" style="flex:1;">{{item.starred ? '★ ' : ''}}{{item.titleHL || item.title || '未命名文档'}}</view>
+        </view>
+        <view class="time muted">{{item.updatedText}}</view>
+      </view>
+      <view class="subtitle ellipsis" style="margin-top:8rpx;padding-left:44rpx;">{{item.typeText || '文本'}} · 摘要：{{item.previewHL || item.preview || '保存后自动生成'}}</view>
+      <view style="margin-top: 8rpx; display:flex; gap: 12rpx;padding-left:44rpx;">
+        <text class="action-link icon-row" catchtap="onStar" data-id="{{item.id}}">
+          <image class="icon-sm" src="{{icons.star}}" mode="aspectFit" />
+          {{item.starred ? '取消星标' : '星标'}}
+        </text>
+      </view>
+    </navigator>
+  </block>
+  <view wx:else class="card empty-card">
+    <view class="icon-row">
+      <image class="icon" src="{{icons.brain}}" mode="aspectFit" />
+      <view class="title">还没有文档</view>
+    </view>
+    <view class="subtitle">先上传 PDF、Word、TXT，或直接粘贴一段文字</view>
+    <button class="primary" style="margin-top: 20rpx;" bindtap="onChooseFile">上传第一份文档</button>
+  </view>
+</view>

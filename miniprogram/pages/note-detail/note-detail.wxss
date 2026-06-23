@@ -1,0 +1,9 @@
+.char-count {
+  text-align: right;
+  font-size: 24rpx;
+  color: #9ca3af;
+  margin-top: 8rpx;
+}
+.char-warn {
+  color: #dc2626;
+}
