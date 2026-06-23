@@ -48,10 +48,10 @@
 .theme-preview-default .tp-card { background: #fff; box-shadow: 0 2rpx 12rpx rgba(102,126,234,0.12); border-radius: 14rpx; }
 
 /* 暗夜黑预览 */
-.theme-preview-dark { background: #0f0f1a; }
+.theme-preview-dark { background: #000000; }
 .theme-preview-dark .tp-bar { background: linear-gradient(135deg, #4a5ae8, #7c3aed); }
 .theme-preview-dark .tp-hero { background: linear-gradient(135deg, #4a5ae8, #7c3aed); }
-.theme-preview-dark .tp-card { background: #1e1e36; border: 1rpx solid rgba(255,255,255,0.06); border-radius: 14rpx; }
+.theme-preview-dark .tp-card { background: #1c1c1e; border-radius: 14rpx; }
 
 /* 简约清爽预览 */
 .theme-preview-clean { background: #fafbfc; }
