@@ -1,14 +1,23 @@
 const storage = require('../../utils/storage')
 const graphLib = require('../../utils/graph')
-const { getThemeClass, applyPageTheme } = require('../../utils/theme')
+const { getThemeClass, applyPageTheme, getTheme } = require('../../utils/theme')
 
 const ENTITY_GROUPS = new Set(['项目', '组织', '角色', '时间', '术语', '地点', '阶段'])
 
+const THEME_BGS = {
+  default: { doc: '#dbeafe', tag: '#dcfce7', kw: '#ede9fe', ent: '#ffe4e6' },
+  dark:    { doc: '#1e3a5f', tag: '#1a3a2a', kw: '#2d2050', ent: '#3a1a1a' },
+  clean:   { doc: '#e8f0fe', tag: '#e6f4ea', kw: '#f3e8fd', ent: '#fce8e8' },
+  warm:    { doc: '#fff0e6', tag: '#e8f8f5', kw: '#f0e6ff', ent: '#ffe8e8' }
+}
+
 const bg = function (group) {
-  if (group === 'doc') return '#dbeafe'
-  if (group === 'tag') return '#dcfce7'
-  if (group === '关键词') return '#ede9fe'
-  return '#ffe4e6'
+  const theme = getTheme()
+  const t = THEME_BGS[theme] || THEME_BGS.default
+  if (group === 'doc') return t.doc
+  if (group === 'tag') return t.tag
+  if (group === '关键词') return t.kw
+  return t.ent
 }
 
 const groupLabel = function (group) {

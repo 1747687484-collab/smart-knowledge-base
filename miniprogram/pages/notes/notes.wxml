@@ -8,15 +8,15 @@
           <view class="subtitle">记录想法、待办、会议要点和临时信息</view>
         </view>
       </view>
-      <navigator class="primary btn icon-row" url="/pages/note-detail/note-detail">
-        <image class="icon-sm" src="{{icons.note}}" mode="aspectFit" style="margin-right:8rpx;" />
+      <navigator class="primary btn icon-btn icon-row" url="/pages/note-detail/note-detail">
+        <image class="icon-sm" src="{{icons.note}}" mode="aspectFit" />
         新建
       </navigator>
     </view>
   </view>
 
   <view class="search-bar">
-    <image class="icon-sm" src="{{icons.search}}" mode="aspectFit" style="margin-left:16rpx;" />
+    <image class="icon-sm ml-16" src="{{icons.search}}" mode="aspectFit" />
     <input class="search-input" placeholder="搜索笔记标题或内容" value="{{searchKey}}" bindinput="onSearchInput" bindconfirm="onSearch" />
     <view class="search-clear" wx:if="{{searchKey}}" bindtap="onSearchClear">清除</view>
   </view>
@@ -25,14 +25,14 @@
   <block wx:if="{{list.length}}">
     <navigator class="card" wx:for="{{list}}" wx:key="id" url="/pages/note-detail/note-detail?id={{item.id}}">
       <view class="row-between">
-        <view class="icon-row" style="flex:1;min-width:0;">
+        <view class="icon-row flex-1">
           <image class="icon-sm" src="{{icons.note}}" mode="aspectFit" />
-          <view class="title ellipsis" style="flex:1;">{{item.pinned ? '📌 ' : ''}}{{item.starred ? '★ ' : ''}}{{item.titleHL || item.title || '未命名笔记'}}</view>
+          <view class="title ellipsis flex-1">{{item.pinned ? '📌 ' : ''}}{{item.starred ? '★ ' : ''}}{{item.titleHL || item.title || '未命名笔记'}}</view>
         </view>
         <view class="time muted">{{item.updatedText}}</view>
       </view>
-      <view class="subtitle ellipsis" style="margin-top:8rpx;padding-left:44rpx;">{{item.previewHL || item.preview}}</view>
-      <view style="margin-top: 8rpx; display:flex; gap: 12rpx;padding-left:44rpx;">
+      <view class="subtitle ellipsis list-sub">{{item.previewHL || item.preview}}</view>
+      <view class="list-sub-tags">
         <text class="action-link icon-row" bindtap="onStar" data-id="{{item.id}}">
           <image class="icon-sm" src="{{icons.star}}" mode="aspectFit" />
           {{item.starred ? '取消星标' : '星标'}}

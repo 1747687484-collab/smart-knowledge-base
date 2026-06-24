@@ -17,30 +17,30 @@
       <view class="{{onlyDoc ? 'switch-item active' : 'switch-item'}}" bindtap="onToggleScope">仅当前文档</view>
       <view class="{{onlyDoc ? 'switch-item' : 'switch-item active'}}" bindtap="onToggleAllScope">全库搜索</view>
     </view>
-    <view style="margin-top: 16rpx; display:flex; gap: 16rpx;">
-      <button class="primary icon-row" style="flex:1;justify-content:center;" bindtap="onAsk">
-        <image class="icon-sm" src="{{icons.search}}" mode="aspectFit" style="margin-right:8rpx;" />
+    <view class="input-row">
+      <button class="primary icon-btn icon-row flex-1" bindtap="onAsk">
+        <image class="icon-sm" src="{{icons.search}}" mode="aspectFit" />
         提问
       </button>
-      <button class="ghost" style="flex:1;" bindtap="onClear">清空</button>
+      <button class="ghost flex-1" bindtap="onClear">清空</button>
     </view>
   </view>
 
-  <view wx:if="{{loading}}" class="card" style="text-align: center; padding: 40rpx;">
+  <view wx:if="{{loading}}" class="card text-center" style="padding: 40rpx;">
     <view class="subtitle">正在检索知识库并生成回答…</view>
   </view>
 
   <block wx:if="{{answer}}">
     <view class="card">
-      <view class="icon-row" style="margin-bottom:12rpx;">
+      <view class="icon-row mb-12">
         <image class="label-icon" src="{{icons.brain}}" mode="aspectFit" />
-        <view class="label" style="margin-bottom:0;">回答</view>
+        <view class="label mb-0">回答</view>
       </view>
       <view class="body-text">{{answer}}</view>
-      <view style="margin-top: 12rpx; display:flex; gap: 16rpx;">
-        <button class="ghost" style="flex:1;" bindtap="onReask">重新提问</button>
-        <button class="ghost icon-row" style="flex:1;justify-content:center;" bindtap="onCopyAnswer">
-          <image class="icon-sm" src="{{icons.copy}}" mode="aspectFit" style="margin-right:8rpx;" />
+      <view class="input-row mt-12">
+        <button class="ghost flex-1" bindtap="onReask">重新提问</button>
+        <button class="ghost icon-btn icon-row flex-1" bindtap="onCopyAnswer">
+          <image class="icon-sm" src="{{icons.copy}}" mode="aspectFit" />
           复制回答
         </button>
       </view>
@@ -65,7 +65,7 @@
       <view class="row-between">
         <view class="icon-row">
           <image class="label-icon" src="{{icons.database}}" mode="aspectFit" />
-          <view class="label" style="margin-bottom:0;">历史问答</view>
+          <view class="label mb-0">历史问答</view>
         </view>
         <view class="action-link" bindtap="onClearHistory">清空</view>
       </view>

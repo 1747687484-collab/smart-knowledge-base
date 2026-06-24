@@ -48,7 +48,7 @@
   <navigator class="card" url="/pages/documents/documents">
     <view class="icon-row">
       <image class="icon" src="{{icons.doc}}" mode="aspectFit" />
-      <view style="flex:1;">
+      <view class="flex-1">
         <view class="title">文档管理</view>
         <view class="subtitle">上传资料、查看摘要、关键词和知识卡片</view>
       </view>
@@ -57,7 +57,7 @@
   <navigator class="card" url="/pages/notes/notes">
     <view class="icon-row">
       <image class="icon" src="{{icons.note}}" mode="aspectFit" />
-      <view style="flex:1;">
+      <view class="flex-1">
         <view class="title">笔记管理</view>
         <view class="subtitle">记录想法、待办和临时信息</view>
       </view>
@@ -66,7 +66,7 @@
   <navigator class="card" url="/pages/qa/qa">
     <view class="icon-row">
       <image class="icon" src="{{icons.qa}}" mode="aspectFit" />
-      <view style="flex:1;">
+      <view class="flex-1">
         <view class="title">智能问答</view>
         <view class="subtitle">基于已收录内容进行提问</view>
       </view>
@@ -75,7 +75,7 @@
   <navigator class="card" url="/pages/graph/graph">
     <view class="icon-row">
       <image class="icon" src="{{icons.graph}}" mode="aspectFit" />
-      <view style="flex:1;">
+      <view class="flex-1">
         <view class="title">知识图谱</view>
         <view class="subtitle">查看知识结构、实体与关系</view>
       </view>
@@ -84,25 +84,25 @@
 
   <view class="section-title">数据</view>
   <view class="card">
-    <view class="icon-row" style="margin-bottom:12rpx;">
+    <view class="icon-row mb-12">
       <image class="icon" src="{{icons.database}}" mode="aspectFit" />
       <view>
         <view class="title">导入示例数据</view>
         <view class="subtitle">用于快速体验文档摘要、标签、问答和图谱</view>
       </view>
     </view>
-    <button class="primary" style="width: 100%;" bindtap="onLoadDemo">一键导入示例</button>
+    <button class="primary w-full" bindtap="onLoadDemo">一键导入示例</button>
   </view>
 
   <view class="card">
-    <view class="icon-row" style="margin-bottom:12rpx;">
+    <view class="icon-row mb-12">
       <image class="icon-sm" src="{{icons.trash}}" mode="aspectFit" />
       <view>
         <view class="title text-danger">清空全部数据</view>
         <view class="subtitle">清除所有本地文档、笔记和问答历史</view>
       </view>
     </view>
-    <button class="ghost" style="width: 100%;" bindtap="onClear">清空数据</button>
+    <button class="ghost w-full" bindtap="onClear">清空数据</button>
   </view>
 
   <view class="card">

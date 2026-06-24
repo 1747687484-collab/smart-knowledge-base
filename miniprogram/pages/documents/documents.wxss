@@ -14,5 +14,5 @@
 }
 .tab.active {
   background: var(--color-primary);
-  color: #ffffff;
+  color: var(--color-hero-title);
 }

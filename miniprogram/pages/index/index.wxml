@@ -71,13 +71,13 @@
   <block wx:if="{{docs.length}}">
     <navigator class="card" wx:for="{{docs}}" wx:key="id" url="/pages/document-detail/document-detail?id={{item.id}}&type=doc">
       <view class="row-between">
-        <view class="icon-row" style="flex:1;min-width:0;">
+        <view class="icon-row flex-1">
           <image class="icon-sm" src="{{icons.doc}}" mode="aspectFit" />
-          <view class="title ellipsis" style="flex:1;">{{item.title || '未命名文档'}}</view>
+          <view class="title ellipsis flex-1">{{item.title || '未命名文档'}}</view>
         </view>
         <view class="time muted">{{item.updatedText}}</view>
       </view>
-      <view class="subtitle ellipsis" style="margin-top:8rpx;padding-left:44rpx;">摘要：{{item.preview || '保存后自动生成'}}</view>
+      <view class="subtitle ellipsis list-sub">摘要：{{item.preview || '保存后自动生成'}}</view>
     </navigator>
   </block>
   <view wx:else class="card empty-card">
@@ -93,13 +93,13 @@
   <block wx:if="{{notes.length}}">
     <navigator class="card" wx:for="{{notes}}" wx:key="id" url="/pages/note-detail/note-detail?id={{item.id}}&type=note">
       <view class="row-between">
-        <view class="icon-row" style="flex:1;min-width:0;">
+        <view class="icon-row flex-1">
           <image class="icon-sm" src="{{icons.note}}" mode="aspectFit" />
-          <view class="title ellipsis" style="flex:1;">{{item.title || '未命名笔记'}}</view>
+          <view class="title ellipsis flex-1">{{item.title || '未命名笔记'}}</view>
         </view>
         <view class="time muted">{{item.updatedText}}</view>
       </view>
-      <view class="subtitle ellipsis" style="margin-top:8rpx;padding-left:44rpx;">摘要：{{item.preview || '保存后自动生成'}}</view>
+      <view class="subtitle ellipsis list-sub">摘要：{{item.preview || '保存后自动生成'}}</view>
     </navigator>
   </block>
   <view wx:else class="card empty-card">
@@ -121,7 +121,7 @@
       <view class="step-icon"><image src="{{icons.brain}}" mode="aspectFit" /></view>
       自动生成摘要、标签与知识切片
     </view>
-    <view class="step-row" style="margin-bottom:0;">
+    <view class="step-row mb-0">
       <view class="step-icon"><image src="{{icons.qa}}" mode="aspectFit" /></view>
       在问答页向知识库提问
     </view>

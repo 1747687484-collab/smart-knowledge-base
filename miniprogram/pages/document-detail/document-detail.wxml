@@ -1,9 +1,9 @@
 <view class="container {{themeClass}}">
   <block wx:if="{{notFound}}">
-    <view class="card" style="text-align: center; padding: 80rpx 24rpx;">
+    <view class="card detail-header">
       <view class="title">记录未找到</view>
       <view class="subtitle">该文档或笔记可能已被删除</view>
-      <navigator class="primary btn" style="margin-top: 24rpx;" url="/pages/index/index">返回首页</navigator>
+      <navigator class="primary btn mt-24" url="/pages/index/index">返回首页</navigator>
     </view>
   </block>
   <block wx:else>
@@ -21,14 +21,14 @@
     <view class="row-between">
       <view class="icon-row">
         <image class="label-icon" src="{{icons.brain}}" mode="aspectFit" />
-        <view class="label" style="margin-bottom:0;">智能摘要</view>
+        <view class="label mb-0">智能摘要</view>
       </view>
       <view class="action-link icon-row" bindtap="onCopySummary">
         <image class="icon-sm" src="{{icons.copy}}" mode="aspectFit" />
         复制
       </view>
     </view>
-    <view class="body-text" style="margin-top:12rpx;">{{item.summary || '内容过短或未识别到摘要'}}</view>
+    <view class="body-text mt-12">{{item.summary || '内容过短或未识别到摘要'}}</view>
   </view>
 
   <view class="grid2">
@@ -49,9 +49,9 @@
   </view>
 
   <view class="card">
-    <view class="icon-row" style="margin-bottom:12rpx;">
+    <view class="icon-row mb-12">
       <image class="label-icon" src="{{icons.key}}" mode="aspectFit" />
-      <view class="label" style="margin-bottom:0;">关键词</view>
+      <view class="label mb-0">关键词</view>
     </view>
     <view>
       <text class="chip" wx:for="{{item.keywords}}" wx:key="*this">{{item}}</text>
@@ -60,9 +60,9 @@
   </view>
 
   <view class="card">
-    <view class="icon-row" style="margin-bottom:12rpx;">
+    <view class="icon-row mb-12">
       <image class="label-icon" src="{{icons.tag}}" mode="aspectFit" />
-      <view class="label" style="margin-bottom:0;">标签</view>
+      <view class="label mb-0">标签</view>
     </view>
     <view>
       <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text>
@@ -71,9 +71,9 @@
   </view>
 
   <view class="card">
-    <view class="icon-row" style="margin-bottom:12rpx;">
+    <view class="icon-row mb-12">
       <image class="label-icon" src="{{icons.entity}}" mode="aspectFit" />
-      <view class="label" style="margin-bottom:0;">知识实体</view>
+      <view class="label mb-0">知识实体</view>
     </view>
     <block wx:if="{{item.entities.length}}">
       <view class="grid3">
@@ -90,7 +90,7 @@
     <view class="row-between">
       <view class="icon-row">
         <image class="label-icon" src="{{icons.chunk}}" mode="aspectFit" />
-        <view class="label" style="margin-bottom:0;">知识切片预览</view>
+        <view class="label mb-0">知识切片预览</view>
       </view>
       <view class="action-link icon-row" bindtap="onCopyContent">
         <image class="icon-sm" src="{{icons.copy}}" mode="aspectFit" />
@@ -109,9 +109,9 @@
   </view>
 
   <view class="card" wx:if="{{related.length}}">
-    <view class="icon-row" style="margin-bottom:12rpx;">
+    <view class="icon-row mb-12">
       <image class="label-icon" src="{{icons.link}}" mode="aspectFit" />
-      <view class="label" style="margin-bottom:0;">相关推荐</view>
+      <view class="label mb-0">相关推荐</view>
     </view>
     <navigator class="card source-card" wx:for="{{related}}" wx:key="id" url="/pages/document-detail/document-detail?id={{item.id}}&type={{item.type}}">
       <view class="title ellipsis">{{item.title}}</view>
@@ -120,12 +120,12 @@
   </view>
 
   <view class="card">
-    <view class="icon-row" style="margin-bottom:12rpx;">
+    <view class="icon-row mb-12">
       <image class="icon-sm" src="{{icons.trash}}" mode="aspectFit" />
       <view class="title text-danger">危险操作</view>
     </view>
     <view class="subtitle">删除后不可恢复</view>
-    <button class="ghost" style="margin-top: 16rpx; width: 100%;" bindtap="onDelete">删除该文档</button>
+    <button class="ghost detail-actions mt-16" bindtap="onDelete">删除该文档</button>
   </view>
   </block>
 </view>

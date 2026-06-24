@@ -9,15 +9,15 @@
     </view>
   </view>
 
-  <view class="grid2" style="margin-bottom: 12rpx;">
+  <view class="grid2 mb-12">
     <button class="{{mode === 'all' ? 'primary' : 'ghost'}}" bindtap="onModeAll">整体知识库</button>
     <button class="{{mode === 'doc' ? 'primary' : 'ghost'}}" bindtap="onModeDoc">当前文档</button>
   </view>
 
-  <view wx:if="{{!nodeList.length}}" class="card" style="text-align: center; padding: 60rpx 24rpx;">
+  <view wx:if="{{!nodeList.length}}" class="card text-center" style="padding: 60rpx 24rpx;">
     <view class="title">暂无图谱数据</view>
     <view class="subtitle">先在「文档」或「笔记」中收录内容，再回来看知识图谱</view>
-    <navigator class="primary btn" style="margin-top: 20rpx;" url="/pages/documents/documents">去收录文档</navigator>
+    <navigator class="primary btn mt-20" url="/pages/documents/documents">去收录文档</navigator>
   </view>
 
   <!-- 图谱可视化 - 放在首屏可见位置 -->
@@ -45,9 +45,9 @@
     <view class="{{graphType === 'time' ? 'tab active' : 'tab'}}" bindtap="onFilterType" data-t="time">时间</view>
   </view>
 
-  <view class="grid2" wx:if="{{nodeList.length}}" style="margin-bottom: 12rpx;">
-    <button class="ghost icon-row" style="justify-content:center;" bindtap="onExportText">
-      <image class="icon-sm" src="{{icons.export}}" mode="aspectFit" style="margin-right:8rpx;" />
+  <view class="grid2 mb-12" wx:if="{{nodeList.length}}">
+    <button class="ghost icon-btn icon-row" bindtap="onExportText">
+      <image class="icon-sm" src="{{icons.export}}" mode="aspectFit" />
       导出图谱
     </button>
   </view>
@@ -59,7 +59,7 @@
         <view class="action-link" bindtap="onCloseNode">关闭</view>
       </view>
       <view class="subtitle">类型：{{selectedNode.group}}</view>
-      <view wx:if="{{selectedNode.relations.length}}" style="margin-top: 12rpx;">
+      <view wx:if="{{selectedNode.relations.length}}" class="mt-12">
         <view class="label">关联关系</view>
         <view class="body-text" wx:for="{{selectedNode.relations}}" wx:key="*this">{{item}}</view>
       </view>
