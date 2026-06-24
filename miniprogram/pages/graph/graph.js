@@ -4,7 +4,12 @@ const { getThemeClass, applyPageTheme, getTheme } = require('../../utils/theme')
 
 const ENTITY_GROUPS = new Set(['项目', '组织', '角色', '时间', '术语', '地点', '阶段'])
 
-const THEME_BGS = {
+const THEME_EDGE = {
+  default: { line: '#cbd5e1', text: '#1a1a2e' },
+  dark:    { line: '#4a4a6a', text: '#e2e8f0' },
+  clean:   { line: '#d1d5db', text: '#1d1d1f' },
+  warm:    { line: '#f5d0c0', text: '#2d3436' }
+}
   default: { doc: '#dbeafe', tag: '#dcfce7', kw: '#ede9fe', ent: '#ffe4e6' },
   dark:    { doc: '#1e3a5f', tag: '#1a3a2a', kw: '#2d2050', ent: '#3a1a1a' },
   clean:   { doc: '#e8f0fe', tag: '#e6f4ea', kw: '#f3e8fd', ent: '#fce8e8' },
@@ -227,7 +232,9 @@ Page({
       canvas.height = res[0].height * dpr
       ctx.scale(dpr, dpr)
       ctx.clearRect(0, 0, res[0].width, res[0].height)
-      ctx.strokeStyle = '#cbd5e1'
+      const theme = getTheme()
+      const edgeColors = THEME_EDGE[theme] || THEME_EDGE.default
+      ctx.strokeStyle = edgeColors.line
       ctx.lineWidth = 1
       const nodeList = this.data.nodeList
       const edgeList = this.data.edgeList
